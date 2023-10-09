@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html.njk' %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      {% block title %}
+        Most Liked Fossils
+       {% endblock %}
+    </title>
+  </head>
+
+  <body>
+    {% block content %}
+
+      <h1>Welcome, {{ name }}</h1>
+      <a href="/">Home Page</a>
+
+      <div class="fossil-div">
+       {% for item, fossil in fossils %}
+          <h3>{{ name }}, this is a {{ fossil.name }}</h3>
+          <h2>Liked {{ fossil.num_likes }} times.</h2>
+          <img src="{{ fossil.img }}" />
+        {% endfor %}
+      </div>
+
+      <form action ="/like-fossil" method="post">
+        Top 4 Fossils:
+        <select name="fossilId">
+          <option value="{{ fossil }}">{{ fossil }}</option>
+          <option value="{{ fossil }}">{{ fossil }}</option>
+          <option value="{{ fossil }}">{{ fossil }}</option>
+          <option value="{{ fossil }}">{{ fossil }}</option>
+        </select>
+        <input type="submit>
+      </form>
+    {% endblock %}
+  </body>
+</html>
